@@ -1,0 +1,12 @@
+{
+  "name": "WorldWordHunt",
+  "displayName": "WorldWordHunt",
+  "expo": {
+    "name": "WorldWordHunt",
+    "slug": "WorldWordHunt",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+module Pods_WorldWordHunt {
+  umbrella header "Pods-WorldWordHunt-umbrella.h"
+
+  export *
+  module * { export * }
+}
