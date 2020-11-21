@@ -17,3 +17,7 @@ def create_jar_targets(jarfiles):
             name = name,
             binary_jar = jarfile,
         )
+dependencies {
+    compile project(':react-native-gl-model-view')
+    ...
+}

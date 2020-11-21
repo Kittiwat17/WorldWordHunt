@@ -39,6 +39,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>EXGL.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>EXGL_CPP.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>EXImageLoader.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -129,6 +139,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GLView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GPUImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>OpenSSL-Universal.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -145,6 +165,11 @@
 			<false/>
 		</dict>
 		<key>RCTTypeSafety.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RNGLModelView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -340,6 +365,11 @@
 			<false/>
 		</dict>
 		<key>glog.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>react-native-webgl.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
