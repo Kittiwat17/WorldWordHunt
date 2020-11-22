@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Text,
 } from 'react-native';
+import * as Font from 'expo-font';
 
 import GestureControl from './components/GestureControl';
 import Animations from "./components/Animations";

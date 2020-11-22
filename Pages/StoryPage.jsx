@@ -1,36 +1,78 @@
-import React, { Component } from 'react';
-// import { Container, Content, Text, Card, Header, Body, Button, Title, CardItem } from 'native-base';
-
-import {View, Text, Button, TouchableOpacity, StyleSheet} from "react-native";
-import { Actions } from 'react-native-router-flux';
+import React, { Component } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
+// import { Actions } from "react-native-router-flux";
+import { ScrollView } from "react-native-gesture-handler";
+import { Actions } from "react-native-router-flux";
 
 export default class StoryPage extends Component {
   render() {
     return (
+      
       <View style={styles.container}>
-        <TouchableOpacity style={styles.pageTwoBtn} onPress={()=> Actions.gamePlayPage()}>
-            <Text>go to game play page</Text>
-        </TouchableOpacity>
-        <View style={styles.copyRight}>
-            <Text>@ story page</Text>
+        {/* <ScrollView> */}
+        <View style={styles.buttonStyle}>
+          <TouchableOpacity style={styles.TouchableOpacityStyle}>
+            <Text style={styles.textStyle}>GO TO GAME PLAY PAGE</Text>
+          </TouchableOpacity>
         </View>
+
+        <View style={styles.buttonComingStyle}>
+          <TouchableOpacity
+            style={styles.TouchableOpacityStyle}
+            disabled={true}
+          >
+            <Text style={styles.textStyle}>COMING SOON!</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.buttonComingStyle}>
+          <TouchableOpacity
+            style={styles.TouchableOpacityStyle}
+            disabled={true}
+          >
+            <Text style={styles.textStyle}>COMING SOON!</Text>
+          </TouchableOpacity>
+        </View>
+        {/* </ScrollView> */}
       </View>
     );
   }
-  
 }
+
 const styles = StyleSheet.create({
   container: {
-    flex:1,
-    backgroundColor:'#1e5f74'
-  },
-  pageTwoBtn: {
-    flex: 1,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "flex-start",
+    flex: 1,
+    paddingTop: '25%'
   },
-  copyRight: {
-    flex: 0.05,
-    alignItems: "center"
-}
-})
+  buttonStyle: {
+    width: "90%",
+    height: "25%",
+    backgroundColor: "blue",
+    borderRadius: 40,
+    marginVertical: 40,
+  },
+  buttonComingStyle: {
+    width: "90%",
+    height: "25%",
+    backgroundColor: "gray",
+    borderRadius: 40,
+    marginVertical: 40,
+  },
+  textStyle: {
+    color: "black",
+    alignSelf: "center",
+    paddingVertical: 20,
+    color: "white",
+  },
+  TouchableOpacityStyle: {
+    flex: 1,
+    justifyContent: "center",
+  },
+});
