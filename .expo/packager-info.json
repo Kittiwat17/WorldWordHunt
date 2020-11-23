@@ -2,9 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 5452,
-  "expoServerNgrokUrl": "https://fn-wgy.anonymous.worldwordhunt.exp.direct",
-  "packagerNgrokUrl": "https://packager.fn-wgy.anonymous.worldwordhunt.exp.direct",
-  "ngrokPid": 7716,
+  "packagerPid": 3436,
+  "expoServerNgrokUrl": null,
+  "ngrokPid": null,
   "webpackServerPort": null
 }
