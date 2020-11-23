@@ -34,14 +34,30 @@ const DATA = [
   },
 ];
 
-const Item = ({ item, onPress, style, separators }) => (
-  <TouchableOpacity
-    style={[styles.item, style]}
-    onPress={() => Actions.gamePlayPage()}
-  >
-    <Text style={styles.title}>{item.title}</Text>
-  </TouchableOpacity>
-);
+const Item = ({ item, onPress, style, separators }) => {
+  if (item.title == "Coming Soon") {
+    return (
+      <TouchableOpacity
+        style={[styles.item, style]}
+        onPress={() => Actions.gamePlayPage()}
+      >
+        <Text style={styles.title}>{item.title}</Text>
+      </TouchableOpacity>
+    )
+  } else {
+    return (
+      <TouchableOpacity
+        style={[styles.item, style]}
+        onPress={() => Actions.gamePlayPage()}
+      >
+        <Text style={styles.title}>{item.title}</Text>
+      </TouchableOpacity>
+    )
+  }
+
+
+}
+
 
 const App = () => {
   const [selectedId, setSelectedId] = useState(null);
@@ -50,27 +66,29 @@ const App = () => {
     return <Item item={item} onPress={() => setSelectedId(item.id)} />;
   };
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.header}>
-        <View style={{ flex: 0.3, textAlign: "left", fontSize: 25 }}>
-        <TouchableOpacity onPress={() => Actions.loginPage()}>
-          <Text>
-            {"< |"}
-          </Text>
-        </TouchableOpacity>
+        <View style={{ flex: 0.3, textAlign: "left" }}>
+          <TouchableOpacity onPress={() => Actions.loginPage()}>
+            <Text style={{ fontSize: 25 }}>
+              {"< |"}
+            </Text>
+          </TouchableOpacity>
         </View>
         <Text style={{ flex: 0.4, textAlign: "center", fontSize: 40 }}>
           Story
         </Text>
-        <Text style={{ flex: 0.3, textAlign: "right" }}></Text>
+        <View>
+          <Text style={{ flex: 0.3, textAlign: "right" }}></Text>
+        </View>
       </View>
-      <FlatList
+      <FlatList style={{ flex: 0.02 }}
         data={DATA}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         extraData={selectedId}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 const styles = StyleSheet.create({
@@ -94,7 +112,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 0.08,
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
     padding: 20,
     flexDirection: "row",

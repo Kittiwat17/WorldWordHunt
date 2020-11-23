@@ -62,16 +62,15 @@ export default GamePlayPage = () => {
       <View style={styles.container}>
       <View style={styles.navbar}></View>
       <View style={styles.navbar}>
-      <View style={{flex:0.3, textAlign:"left"}}>
-        <TouchableOpacity  onPress={()=> Actions.popTo("loginPage")}>
+        <View style={{flex:0.3, textAlign:"left"}}>
+          <TouchableOpacity  onPress={()=> Actions.popTo("loginPage")}>
             <Text style={{fontSize:20}}>{'<| |'}</Text>
-        </TouchableOpacity>
-      </View>
+          </TouchableOpacity>
+        </View>
         <Text style={{flex:0.4, textAlign:"center", fontSize:30}}>TIME {arrowBox}</Text>
-      <View style={{flex:0.3}}>
-        <Text style={{textAlign:"right"}}>dd</Text>
-      </View>
-        
+        <View style={{flex:0.3}}>
+          <Text style={{textAlign:"right"}}>dd</Text>
+        </View>
       </View>
       <View style={styles.content}>
       {/* <Animated.View style={{ transform: decompose2d(centerMap) }}>
