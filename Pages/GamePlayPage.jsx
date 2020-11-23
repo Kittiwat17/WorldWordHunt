@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component , useState} from 'react';
 // import { Container, Content, Text, Card, Header, Body, Button, Title, CardItem } from 'native-base';
 
 import {Dimensions, View, Image, Text, Button, TouchableOpacity, StyleSheet} from "react-native";
@@ -6,6 +6,7 @@ import { Actions } from 'react-native-router-flux';
 import { green } from 'ansi-colors';
 import Animated from "react-native-reanimated";
 import { decompose2d, tween2d, useLoop } from "react-native-redash";
+import Icon from 'react-native-ionicons'
 
 import { Col, Row, Grid } from "react-native-easy-grid";
 
@@ -17,7 +18,14 @@ export const CARD_HEIGHT = (CARD_WIDTH * ratio)/2;
 const CENTER_ratio = 228 / 362;
 export const CENTER_CARD_WIDTH = width * 0.8;
 export const CENTER_CARD_HEIGHT = CENTER_CARD_WIDTH;
+
+
+
 export default GamePlayPage = () => {
+  const[arrowBox, setArrowBox] = new useState([]);
+  const selectArrow = (newArrow) => {
+    setArrowBox(oldArray => [...oldArray, newArrow])
+  }
   // const transform2 = [
   //   { translateY: -10 },
   //   { translateX: 0 },
@@ -48,14 +56,22 @@ export default GamePlayPage = () => {
     { skewX: 0.3},
     { scale: 0.8 },
   ];
+
   // source={require("../assets/card1.png")}
     return (
       <View style={styles.container}>
       <View style={styles.navbar}></View>
       <View style={styles.navbar}>
-      <Text style={{flex:0.3, textAlign:"left"}}>{'< |'}</Text>
-        <Text style={{flex:0.4, textAlign:"center"}}>TIME 00:00</Text>
-        <Text style={{flex:0.3, textAlign:"right"}}>dd</Text>
+      <View style={{flex:0.3, textAlign:"left"}}>
+        <TouchableOpacity  onPress={()=> Actions.popTo("loginPage")}>
+            <Text style={{fontSize:20}}>{'<| |'}</Text>
+        </TouchableOpacity>
+      </View>
+        <Text style={{flex:0.4, textAlign:"center", fontSize:30}}>TIME {arrowBox}</Text>
+      <View style={{flex:0.3}}>
+        <Text style={{textAlign:"right"}}>dd</Text>
+      </View>
+        
       </View>
       <View style={styles.content}>
       {/* <Animated.View style={{ transform: decompose2d(centerMap) }}>
@@ -79,7 +95,7 @@ export default GamePlayPage = () => {
           <TouchableOpacity style={styles.arrowBox}></TouchableOpacity>
           </Row>
           <Row style={styles.selectBtn} size={1}>
-          <TouchableOpacity style={styles.arrowBtn}></TouchableOpacity>
+          <TouchableOpacity style={styles.arrowBtn} onPress={()=>{selectArrow("")}}><Icon ios="ios-add"/></TouchableOpacity>
           </Row>
           </Col>
           <Col>
@@ -138,10 +154,11 @@ const styles = StyleSheet.create({
   },
   navbar:{
     flex:0.08,
-    backgroundColor:"red",
     justifyContent: "center",
     alignItems: "center",
     flexDirection:"row",
+    paddingLeft:10,
+    paddingRight:10
   },
   content: {
     flex: 1,
