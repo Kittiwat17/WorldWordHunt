@@ -1,6 +1,13 @@
 import { Row } from "native-base";
 import React, { Component, useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, FlatList, SafeAreaView} from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  FlatList,
+  SafeAreaView,
+} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Actions } from "react-native-router-flux";
 
@@ -27,8 +34,11 @@ const DATA = [
   },
 ];
 
-const Item = ({ item, onPress, style }) => (
-  <TouchableOpacity  style={[styles.item, style]} onPress={()=> Actions.gamePlayPage()}>
+const Item = ({ item, onPress, style, separators }) => (
+  <TouchableOpacity
+    style={[styles.item, style]}
+    onPress={() => Actions.gamePlayPage()}
+  >
     <Text style={styles.title}>{item.title}</Text>
   </TouchableOpacity>
 );
@@ -37,21 +47,22 @@ const App = () => {
   const [selectedId, setSelectedId] = useState(null);
 
   const renderItem = ({ item }) => {
-    const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#f9c2ff";
-
-    return (
-      <Item
-        item={item}
-        onPress={() => setSelectedId(item.id)}
-        style={{ backgroundColor }}
-      />
-    );
+    return <Item item={item} onPress={() => setSelectedId(item.id)} />;
   };
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={{flex:0.3, textAlign:"left", fontSize: 30}}>{'< |'}</Text>
-        <Text style={{flex: 0.4, textAlign:"center", fontSize: 60}}>Story</Text>
+        <View style={{ flex: 0.3, textAlign: "left", fontSize: 25 }}>
+        <TouchableOpacity onPress={() => Actions.loginPage()}>
+          <Text>
+            {"< |"}
+          </Text>
+        </TouchableOpacity>
+        </View>
+        <Text style={{ flex: 0.4, textAlign: "center", fontSize: 40 }}>
+          Story
+        </Text>
+        <Text style={{ flex: 0.3, textAlign: "right" }}></Text>
       </View>
       <FlatList
         data={DATA}
@@ -70,15 +81,20 @@ const styles = StyleSheet.create({
     // marginTop: StatusBar.currentHeight || 0,
   },
   item: {
-    padding: 80,
+    padding: 100,
     marginVertical: 8,
     marginHorizontal: 16,
+    backgroundColor: "#9ad3bc",
+    marginBottom: 20,
+    borderRadius: 20,
   },
   title: {
     fontSize: 32,
+    textAlign: "center",
   },
   header: {
-    fontSize: 60,
+    flex: 0.08,
+    justifyContent: "center",
     alignItems: "center",
     padding: 20,
     flexDirection: "row",
