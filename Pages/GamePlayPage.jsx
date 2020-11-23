@@ -72,7 +72,7 @@ export default GamePlayPage = () => {
       <View style={styles.navbar}></View>
       <View style={styles.navbar}>
         <View style={{ flex: 0.3, textAlign: "left" }}>
-          <TouchableOpacity onPress={() => Actions.popTo("loginPage")}>
+          <TouchableOpacity onPress={() => Actions.storyPage()}>
             <Text style={{ fontSize: 20 }}>{'<| |'}</Text>
           </TouchableOpacity>
         </View>
