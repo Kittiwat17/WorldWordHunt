@@ -1,78 +1,75 @@
-import React, { Component } from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
-// import { Actions } from "react-native-router-flux";
+import React, { Component, useState } from "react";
+import { View, Text, TouchableOpacity, StyleSheet, FlatList, SafeAreaView} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Actions } from "react-native-router-flux";
 
-export default class StoryPage extends Component {
-  render() {
+const DATA = [
+  {
+    id: "1",
+    title: "Game Play Mode",
+  },
+  {
+    id: "2",
+    title: "Coming Soon",
+  },
+  {
+    id: "3",
+    title: "Coming Soon",
+  },
+  {
+    id: "4",
+    title: "Coming Soon",
+  },
+  {
+    id: "5",
+    title: "Coming Soon",
+  },
+];
+
+const Item = ({ item, onPress, style }) => (
+  <TouchableOpacity  style={[styles.item, style]} onPress={()=> Actions.gamePlayPage()}>
+    <Text style={styles.title}>{item.title}</Text>
+  </TouchableOpacity>
+);
+
+const App = () => {
+  const [selectedId, setSelectedId] = useState(null);
+
+  const renderItem = ({ item }) => {
+    const backgroundColor = item.id === selectedId ? "#6e3b6e" : "#f9c2ff";
+
     return (
-      
-      <View style={styles.container}>
-        {/* <ScrollView> */}
-        <View style={styles.buttonStyle}>
-          <TouchableOpacity style={styles.TouchableOpacityStyle}>
-            <Text style={styles.textStyle}>GO TO GAME PLAY PAGE</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.buttonComingStyle}>
-          <TouchableOpacity
-            style={styles.TouchableOpacityStyle}
-            disabled={true}
-          >
-            <Text style={styles.textStyle}>COMING SOON!</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.buttonComingStyle}>
-          <TouchableOpacity
-            style={styles.TouchableOpacityStyle}
-            disabled={true}
-          >
-            <Text style={styles.textStyle}>COMING SOON!</Text>
-          </TouchableOpacity>
-        </View>
-        {/* </ScrollView> */}
-      </View>
+      <Item
+        item={item}
+        onPress={() => setSelectedId(item.id)}
+        style={{ backgroundColor }}
+      />
     );
-  }
-}
-
+  };
+  return (
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={DATA}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        extraData={selectedId}
+      />
+    </SafeAreaView>
+  );
+};
 const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    justifyContent: "flex-start",
     flex: 1,
-    paddingTop: '25%'
+    // marginTop: StatusBar.currentHeight || 0,
   },
-  buttonStyle: {
-    width: "90%",
-    height: "25%",
-    backgroundColor: "blue",
-    borderRadius: 40,
-    marginVertical: 40,
+  item: {
+    padding: 50,
+    marginVertical: 8,
+    marginHorizontal: 16,
   },
-  buttonComingStyle: {
-    width: "90%",
-    height: "25%",
-    backgroundColor: "gray",
-    borderRadius: 40,
-    marginVertical: 40,
-  },
-  textStyle: {
-    color: "black",
-    alignSelf: "center",
-    paddingVertical: 20,
-    color: "white",
-  },
-  TouchableOpacityStyle: {
-    flex: 1,
-    justifyContent: "center",
+  title: {
+    fontSize: 32,
   },
 });
+
+export default App;
