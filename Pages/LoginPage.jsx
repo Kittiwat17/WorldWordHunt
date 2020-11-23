@@ -7,17 +7,26 @@ import AsyncStorage from '@react-native-community/async-storage';
 import bgimage from '../img/bg.jpg'
 
 export default class LoginPage extends Component {
+  //จะต้องเก็บแบบArray List เก็บได้มากกว่า1
   state = {
     'name': ''
+  }
+  array = {
+    
   }
   componentDidMount = () => AsyncStorage.getItem('name').then((value) => this.setState({ 'name': value }))
 
 
-
   setName = (value) => {
-    AsyncStorage.setItem('name', value);
+    //จะต้องมีเช็คว่า เป็นAccountที่มีอยู่ หรือเพิ่มเข้ามาใหม่
+    //ถ้ามีอยู่แล้วจะดึง Account นั้นมาเลย
+    AsyncStorage.setItem('name', value);//ถ้าใหม่จะsetเพิ่มทันที
     this.setState({ 'name': value });
   }
+
+  //หลังจากกดปุ่ม Play จะไปหน้าถัดไปของ Account นั้น
+
+
   render() {
     return (
       <ImageBackground source={bgimage} style={styles.background}>
@@ -39,7 +48,7 @@ export default class LoginPage extends Component {
           </View>
           <View>
             <Text style={{margin:10}}>
-              {this.state.name}
+              User list : {this.state.name}
             </Text>
           </View>
         </View>
