@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   FlatList,
-  SafeAreaView,
+  Image,
+  Dimensions,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Actions } from "react-native-router-flux";
@@ -14,7 +15,7 @@ import { Actions } from "react-native-router-flux";
 const DATA = [
   {
     id: "1",
-    title: "Game Play Mode",
+    title: "Game Play Modes",
   },
   {
     id: "2",
@@ -37,27 +38,23 @@ const DATA = [
 const Item = ({ item, onPress, style, separators }) => {
   if (item.title == "Coming Soon") {
     return (
-      <TouchableOpacity
-        style={[styles.item, style]}
-        onPress={() => Actions.gamePlayPage()}
-      >
+      <View style={[styles.item, style]}>
         <Text style={styles.title}>{item.title}</Text>
-      </TouchableOpacity>
-    )
+      </View>
+    );
   } else {
     return (
-      <TouchableOpacity
-        style={[styles.item, style]}
-        onPress={() => Actions.gamePlayPage()}
-      >
-        <Text style={styles.title}>{item.title}</Text>
+      <TouchableOpacity onPress={() => Actions.gamePlayPage()}>
+        <View style={{ justifyContent: 'center', alignItems: 'center', paddingVertical: 20}}>
+          <Image
+            style={{ width: Dimensions.get('window').width * 0.95, height: Dimensions.get('window').height / 4.2, borderRadius: 8}}
+            source={require("../assets/card1.png")}
+          />
+        </View>
       </TouchableOpacity>
-    )
+    );
   }
-
-
-}
-
+};
 
 const App = () => {
   const [selectedId, setSelectedId] = useState(null);
@@ -70,9 +67,7 @@ const App = () => {
       <View style={styles.header}>
         <View style={{ flex: 0.3, textAlign: "left" }}>
           <TouchableOpacity onPress={() => Actions.loginPage()}>
-            <Text style={{ fontSize: 25 }}>
-              {"< |"}
-            </Text>
+            <Text style={{ fontSize: 25 }}>{"< |"}</Text>
           </TouchableOpacity>
         </View>
         <Text style={{ flex: 0.4, textAlign: "center", fontSize: 40 }}>
@@ -82,7 +77,8 @@ const App = () => {
           <Text style={{ flex: 0.3, textAlign: "right" }}></Text>
         </View>
       </View>
-      <FlatList style={{ flex: 0.02 }}
+      <FlatList
+        style={{ flex: 0.02 }}
         data={DATA}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
@@ -102,7 +98,7 @@ const styles = StyleSheet.create({
     padding: 100,
     marginVertical: 8,
     marginHorizontal: 16,
-    backgroundColor: "#9ad3bc",
+    backgroundColor: "#EFF0F1",
     marginBottom: 20,
     borderRadius: 20,
   },
