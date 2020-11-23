@@ -51,8 +51,14 @@ export default GamePlayPage = () => {
   // source={require("../assets/card1.png")}
     return (
       <View style={styles.container}>
+      <View style={styles.navbar}></View>
+      <View style={styles.navbar}>
+      <Text style={{flex:0.3, textAlign:"left"}}>{'< |'}</Text>
+        <Text style={{flex:0.4, textAlign:"center"}}>TIME 00:00</Text>
+        <Text style={{flex:0.3, textAlign:"right"}}>dd</Text>
+      </View>
       <View style={styles.content}>
-      <Animated.View style={{ transform: decompose2d(centerMap) }}>
+      {/* <Animated.View style={{ transform: decompose2d(centerMap) }}>
         <Image style={styles.CENTER_MAP} />
         </Animated.View>
         <Animated.View style={{ transform: decompose2d(transform2) }}>
@@ -60,7 +66,7 @@ export default GamePlayPage = () => {
         </Animated.View>
         <Animated.View style={{ transform: decompose2d(transform3) }}>
         <Image style={styles.card} />
-        </Animated.View>
+        </Animated.View> */}
       </View>
         {/* <TouchableOpacity style={styles.pageTwoBtn} onPress={()=> Actions.popTo("loginPage")}>
             <Text>go to login page</Text>
@@ -70,22 +76,50 @@ export default GamePlayPage = () => {
         <Grid>
           <Col>
           <Row style={styles.selectBox} size={1}>
+          <TouchableOpacity style={styles.arrowBox}></TouchableOpacity>
           </Row>
-          <Row style={styles.selectBtn} size={1}></Row>
+          <Row style={styles.selectBtn} size={1}>
+          <TouchableOpacity style={styles.arrowBtn}></TouchableOpacity>
+          </Row>
           </Col>
           <Col>
-          <Row style={styles.selectBox} size={1}></Row>
-          <Row style={styles.selectBtn} size={1}></Row>
+          
+          <Row style={styles.selectBox} size={1}>
+          <TouchableOpacity style={styles.arrowBox}></TouchableOpacity>
+          </Row>
+          <Row style={styles.selectBtn} size={1}>
+          <TouchableOpacity style={styles.arrowBtn}></TouchableOpacity>
+          </Row>
           </Col>
           <Col>
-          <Row style={styles.selectBox} size={1}></Row>
-          <Row style={styles.selectBtn} size={1}></Row>
+          <Row style={styles.selectBox} size={1}>
+          <TouchableOpacity style={styles.arrowBox}></TouchableOpacity>
+          </Row>
+          <Row style={styles.selectBtn} size={1}>
+          <TouchableOpacity style={styles.arrowBtn}></TouchableOpacity>
+          </Row>
           </Col>
           <Col>
-          <Row style={styles.selectBox} size={1}></Row>
-          <Row style={styles.selectBtn} size={1}></Row>
+            <Row style={styles.selectBox} size={1}>
+              <TouchableOpacity style={styles.arrowBox}></TouchableOpacity>
+            </Row>
+            <Row style={styles.selectBtn} size={1}>
+              <TouchableOpacity style={styles.arrowBtn}></TouchableOpacity>
+            </Row>
           </Col>
-          <Col><Row style={styles.selectBtn} size={1}></Row></Col>
+          <Col>
+            <Row style={styles.selectBox} size={1}>
+              <TouchableOpacity style={styles.clearBtn}>
+                <Text>CLEAR</Text>
+              </TouchableOpacity>
+            </Row>
+            <Row style={styles.selectBtn} size={1}>
+              <TouchableOpacity style={styles.goBtn}>
+                <Text>GO</Text>
+              </TouchableOpacity>
+            </Row>
+          </Col>
+          {/* <Col><Row style={styles.selectBtn} size={1}></Row></Col> */}
         </Grid>
             {/* <Text>@ game play page</Text> */}
         </View>
@@ -102,15 +136,23 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-  copyRight: {
-      flex: 0.5,
-      alignItems: "center"
+  navbar:{
+    flex:0.08,
+    backgroundColor:"red",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection:"row",
   },
   content: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
+  copyRight: {
+      flex: 0.4,
+      alignItems: "center"
+  },
+  
   card: {
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
@@ -122,9 +164,51 @@ const styles = StyleSheet.create({
     backgroundColor:"lightgreen"
   },
   selectBtn:{
-    backgroundColor: "orange"
+    justifyContent:"center",
   },
   selectBox:{
-    backgroundColor: "red"
+    justifyContent:"center",
+    alignItems:"center"
+  },
+  arrowBtn:{
+    backgroundColor: '#9ad3bc',
+    justifyContent: 'center',
+    alignContent: 'center',
+    borderWidth: 3,
+    borderRadius: (70 / 2),
+    width: 70,
+    height: 70,
+  },
+  arrowBox:{
+    backgroundColor: 'rgba(20,174,255,0.51)',
+    justifyContent: 'center',
+    alignContent: 'center',
+    borderWidth: 3,
+    borderRadius: 10,
+    width: 70,
+    height: 70,
+  },
+  goBtn:{
+    backgroundColor: '#f5b461',
+    justifyContent: 'center',
+    alignContent: 'center',
+    borderWidth: 3,
+    borderRadius: 10,
+    width: 70,
+    height: 70,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  clearBtn:{
+    backgroundColor: '#ec524b',
+    justifyContent: 'center',
+    alignContent: 'center',
+    borderWidth: 3,
+    borderRadius: 10,
+    width: 70,
+    height: 70,
+    justifyContent: "center",
+    alignItems: "center",
   }
+
 })
