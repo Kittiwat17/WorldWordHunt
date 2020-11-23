@@ -1,3 +1,4 @@
+import { Row } from "native-base";
 import React, { Component, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, FlatList, SafeAreaView} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
@@ -48,6 +49,10 @@ const App = () => {
   };
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={{flex:0.3, textAlign:"left", fontSize: 30}}>{'< |'}</Text>
+        <Text style={{flex: 0.4, textAlign:"center", fontSize: 60}}>Story</Text>
+      </View>
       <FlatList
         data={DATA}
         renderItem={renderItem}
@@ -60,15 +65,23 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // justifyContent: "center",
+    // alignItems: "center",
     // marginTop: StatusBar.currentHeight || 0,
   },
   item: {
-    padding: 50,
+    padding: 80,
     marginVertical: 8,
     marginHorizontal: 16,
   },
   title: {
     fontSize: 32,
+  },
+  header: {
+    fontSize: 60,
+    alignItems: "center",
+    padding: 20,
+    flexDirection: "row",
   },
 });
 
