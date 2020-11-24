@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
-import bgimage from '../img/bg.jpg'
+import bgimage from '../assets/backgrounds/mainBg.jpg'
 import correct from '../img/correrct.png'
 
 export default function CorrectQuestionPage() {

@@ -4,7 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { green } from 'ansi-colors';
 import { View, TextInput, StyleSheet, TouchableOpacity, ImageBackground, Text } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage';
-import bgimage from '../img/bg.jpg'
+import bgimage from '../assets/backgrounds/mainBg.jpg'
 
 export default class LoginPage extends Component {
   //จะต้องเก็บแบบArray List เก็บได้มากกว่า1

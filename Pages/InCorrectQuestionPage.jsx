@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
-import bgimage from '../img/bg.jpg'
+import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import bgimage from '../assets/backgrounds/mainBg.jpg'
 import incorrect from '../img/incorrect.png'
 
 export default function InCorrectQuestionPage() {
@@ -19,7 +19,7 @@ export default function InCorrectQuestionPage() {
         </View>
         <View style={styles.con}>
           <TouchableOpacity style={styles.btnlogin}>
-            <Text style={styles.textstyle}>Continue</Text>
+            <Text style={styles.textstyle}>Replay</Text>
           </TouchableOpacity>
         </View>
         <StatusBar style="auto" />

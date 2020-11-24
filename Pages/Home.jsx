@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity, ImageBackground, Text } from 'react-native'
 import { Actions } from 'react-native-router-flux';
-import bgimage from '../img/bg.jpg'
+import bgimage from '../assets/backgrounds/mainBg.jpg'
 
 const MyHome = () => {
     return (
