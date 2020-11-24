@@ -7481,6 +7481,20 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-native-background-timer@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-background-timer/-/react-native-background-timer-2.1.1.tgz#9a2489681ab2f8033c213c73272e9d4c47572cd5"
+  integrity sha512-cuXIIv+dcG8a8qkTD8pMzeqOEZCO+UGKglZWIe1osve+yJslmCowYQff+bI9xa7NOt2w+Vtd4L3d9JonlSqODg==
+
+react-native-counter-timer@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-counter-timer/-/react-native-counter-timer-1.1.1.tgz#f58ac30a7a4c65e7e97d804ee86ffefce11616bf"
+  integrity sha512-l4HFhEANFP5FLzZwEkSUSMW4BlHlQj7pwnNuoZBlGEHosMpgR8hd7R6lTL4kmu7yY7Mx111g0MGskoh+1ejDwQ==
+  dependencies:
+    react-native-background-timer "2.1.1"
+    react-native-linear-gradient "2.5.4"
+    react-native-progress "3.4.0"
+
 react-native-drawer@2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/react-native-drawer/-/react-native-drawer-2.5.1.tgz#08b9314184f48c724f1b467f8859797369798654"
@@ -7511,15 +7525,22 @@ react-native-gl-model-view@^1.6.0:
   resolved "https://registry.yarnpkg.com/react-native-gl-model-view/-/react-native-gl-model-view-1.6.0.tgz#96890b6345f8f8c642c42aaa173ef20acf8ea2d9"
   integrity sha512-isZNRDe9gQz/HhCRMhlz1lxhdZfyUYo1ng8LJroSCRTCx7xOdTWENCGxN02wgUw5igQiRaZKEXy0npfqYg2Qqw==
 
-react-native-ionicons@^4.x:
-  version "4.6.5"
-  resolved "https://registry.yarnpkg.com/react-native-ionicons/-/react-native-ionicons-4.6.5.tgz#b792ec8896381e67ff237eba955e38afe7ceb7a4"
-  integrity sha512-s2Ia7M5t609LE9LWygMj3ALVPUlKhK7R9XcMb67fP4EYJv0oLcwg5pc+8ftv9XXaUuTW/WgL3zJlBYxAvtvMJg==
-
 react-native-iphone-x-helper@^1.0.3:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.2.1.tgz#645e2ffbbb49e80844bb4cbbe34a126fda1e6772"
   integrity sha512-/VbpIEp8tSNNHIvstuA3Swx610whci1Zpc9mqNkqn14DkMbw+ORviln2u0XyHG1kPvvwTNGZY6QpeFwxYaSdbQ==
+
+react-native-linear-gradient@2.5.4:
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.4.tgz#dce133526f5a5510a639af94544f1ed0c984bd1e"
+  integrity sha512-FF1NhlerA4uBiS0gFIHa4FBp8/aftv4vPj14Y47lGNkYjSI94tnI6oYO3EfUxXjEyCUPiOVNKZOB9kScyjc5Ew==
+
+react-native-progress@3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-progress/-/react-native-progress-3.4.0.tgz#c002e6efb2f0b82dd6889510e669c492da2718ac"
+  integrity sha512-Kqc+wwQHyBG83Fnbb84oM9qqgn1d51ABVS/RK36V+35KmihEYx33WijdQT05iwT+tfJWGArvFLsZWbd8mKyJ6A==
+  dependencies:
+    prop-types "^15.5.8"
 
 react-native-reanimated@^1.13.1:
   version "1.13.1"
@@ -7714,6 +7735,11 @@ react-test-renderer@~16.13.1:
     prop-types "^15.6.2"
     react-is "^16.8.6"
     scheduler "^0.19.1"
+
+react-timer-machine@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-timer-machine/-/react-timer-machine-1.0.2.tgz#c8d4b8bb5701ac890f4101c0add134f5408a96df"
+  integrity sha512-2O6AvKMLknKAjmi/g2FCy41AzBYpoYP599yacZ6fXO/7DCZ+JSwnUFkLrOp1/Vz4DN4WBcqKNVnVAoui39Ee6w==
 
 react-timer-mixin@^0.13.4:
   version "0.13.4"
