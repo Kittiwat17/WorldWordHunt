@@ -1,34 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, ImageBackground, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
 import bgimage from '../assets/backgrounds/mainBg.jpg'
+import cat from '../img/cat.png'
 
-
-const DATA = [
+//ถ้าเลือกแล้วข้อไหนมีid == 1 จะไปหน้า correct
+const Problem1 = [
   {
-    title: 'Question1',
+    id:'1',
+    choice: 'cat'
   },
   {
-    title: 'Question2',
+    id:'0',
+    choice: 'dog'
   },
   {
-    title: 'Question3',
+    id:'0',
+    choice: 'rat'
   },
   {
-    title: 'Question4',
+    id:'0',
+    choice: 'zebra'
   },
-];
+  
+]
 
 
-const Item = ({ title }) => (
+
+const Item = ({ choice }) => (
   <TouchableOpacity style={styles.item} >
-    <Text style={styles.title}>{title}</Text>
+    <Text style={styles.choice}>{choice}</Text>
 
   </TouchableOpacity >
 );
 export default  function QuestionPage() {
   const renderItem = ({ item }) => (
-    <Item title={item.title} />
+    <Item choice={item.choice} />
   );
   return (
     <ImageBackground source={bgimage} style={styles.background}>
@@ -37,10 +44,18 @@ export default  function QuestionPage() {
           Question
         </Text>
       </View>
+      <View style={styles.cath}>
+        <Image source={cat} style={styles.cat}></Image>
+      </View>
+      <View style={styles.boxPro}>
+        <Text style={styles.Pro}>
+          This is a ...
+        </Text>
+      </View>
       <View style={styles.BoxQ}>
         <SafeAreaView style={styles.container}>
           <FlatList
-            data={DATA}
+            data={Problem1}
             renderItem={renderItem}
             style={styles.flat}
           />
@@ -56,14 +71,15 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  }, BoxQ: {
+  }, 
+  BoxQ: {
     width: 300,
-    height: 470,
+    height: 360,
     backgroundColor: 'rgba(0, 0, 0, 0.10)',
     borderRadius: 25,
   },
   Topic: {
-    margin: 20
+    
   },
   TopicQ: {
     fontSize: 40,
@@ -82,5 +98,20 @@ const styles = StyleSheet.create({
   },
   flat: {
     margin: 20
+  },
+  boxPro:{
+    margin:10,
+  },
+  Pro:{
+    fontSize: 20
+  },
+  cat: {
+    width: 180,
+    height: 180
+  },
+  choice: {
+    fontSize: 20,
+    textAlign: 'center',
+    fontWeight: 'bold'
   }
 });
