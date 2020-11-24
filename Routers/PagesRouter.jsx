@@ -4,6 +4,7 @@ import { Router, Scene } from 'react-native-router-flux';
 import LoginPage from "../Pages/LoginPage";
 import StoryPage from "../Pages/StoryPage";
 import GamePlayPage from "../Pages/GamePlayPage";
+import MyHome from "../Pages/Home";
 
 export default class PagesRouter extends Component {
 
@@ -12,7 +13,7 @@ export default class PagesRouter extends Component {
       <Router>
         <Scene key="root">
           <Scene key="loginPage" component={LoginPage} title="Login" hideNavBar={true} initial={true} />
-          <Scene key="storyPage" component={StoryPage} title="Story" hideNavBar={true}/>
+          <Scene key="storyPage" component={StoryPage} title="Story" hideNavBar={true} />
           <Scene key="gamePlayPage" component={GamePlayPage} title="MainGame" hideNavBar={true} />
         </Scene>
       </Router>
