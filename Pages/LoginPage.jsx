@@ -42,7 +42,7 @@ export default class LoginPage extends Component {
               autoCapitalize='none'
               maxLength={10}
               onChangeText={this.setName} />
-            <TouchableOpacity style={styles.btnlogin} onPress={() => Actions.storyPage()}>
+            <TouchableOpacity style={styles.btnlogin} onPress={() => Actions.storyPage(this.state.name)}>
               <Text style={styles.textstyle}>PLAY</Text>
             </TouchableOpacity>
           </View>
