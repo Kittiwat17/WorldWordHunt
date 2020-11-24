@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react';
 // import { Container, Content, Text, Card, Header, Body, Button, Title, CardItem } from 'native-base';
 
-import { Dimensions, View, Image, Text, Button, TouchableOpacity, StyleSheet } from "react-native";
+import { Dimensions, View, Image, Text, ScrollView, TouchableOpacity, StyleSheet, ImageBackground } from "react-native";
 import { Actions } from 'react-native-router-flux';
 import { green } from 'ansi-colors';
 import Animated from "react-native-reanimated";
@@ -49,14 +49,12 @@ export default GamePlayPage = () => {
         case "arrow-top-left-thick":
           if (characterMoveX < moveLenght) {
             setCharacterMoveX(oldPosition => -(moveLenght - oldPosition));
+          } else if (characterMoveX > moveLenght) {
+            setCharacterMoveX(oldPosition => oldPosition - moveLenght);
           }
           if (characterMoveY < moveLenght) {
             setCharacterMoveY(oldPosition => -(moveLenght - oldPosition));
-          }
-          if (characterMoveX > moveLenght) {
-            setCharacterMoveX(oldPosition => oldPosition - moveLenght);
-          }
-          if (characterMoveY > moveLenght) {
+          } else if (characterMoveY > moveLenght) {
             setCharacterMoveY(oldPosition => oldPosition - moveLenght);
 
           }
@@ -132,30 +130,41 @@ export default GamePlayPage = () => {
   ];
   const monster = [
     { translateY: 100 },
-    { translateX: characterMoveX },
+    { translateX: 50 },
   ];
+  const map = [
+    { translateY: 200 },
+    { translateX: -25 },
+  ];
+  
 
   // source={require("../assets/card1.png")}
   return (
     <View style={styles.container}>
+    <ImageBackground style={{zIndex:-1}} source={require("../assets/backgrounds/mainBg.jpg")}>
       <View style={styles.navbar}></View>
       <View style={styles.navbar}>
         <View style={{ flex: 0.3, textAlign: "left" }}>
           <TouchableOpacity onPress={() => Actions.popTo("loginPage")}>
-          <Icon name="arrow-left-bold" size={40} color={"#222"} />
-          
+            <Icon name="arrow-left-bold" size={40} color={"#222"} />
+
           </TouchableOpacity>
         </View>
-        <Text style={{ flex: 0.4, textAlign: "center", fontSize: 30 }}>TIME
+        <Text style={{ flex: 0.4, textAlign: "center", fontSize: 30 }}>TIME 00:00
        </Text>
         <View style={{ flex: 0.3 }}>
+
           <Text style={{ textAlign: "right" }}>
             <Icon name="lightbulb-outline" size={40} color={arrowColor} />
           </Text>
         </View>
       </View>
       <View style={styles.content}>
-        <Animated.View style={{ transform: decompose2d(centerMap) }}>
+        <ScrollView  style={{
+          padding:20
+        }}>
+          <Animated.Image style={[styles.map, { transform: decompose2d(map) }]} source={require("../assets/floorbox.png")}></Animated.Image>
+          {/* <Animated.View style={{ transform: decompose2d(centerMap) }}>
           <Image style={styles.CENTER_MAP} />
         </Animated.View>
         <Animated.View style={{ transform: decompose2d(transform2) }}>
@@ -163,12 +172,12 @@ export default GamePlayPage = () => {
         </Animated.View>
         <Animated.View style={{ transform: decompose2d(transform3) }}>
           <Image style={styles.card} />
-        </Animated.View>
+        </Animated.View> */}
 
-        {/* <Animated.Image style={[styles.monster,{ transform: decompose2d(monster) }]} source={require('../assets/alphabet/A.png')}></Animated.Image> */}
+          <Animated.Image style={[styles.monster, { transform: decompose2d(monster) }]} source={require('../assets/alphabet/A.png')}></Animated.Image>
 
-        <Animated.View style={[styles.character, { transform: decompose2d(character) }]}></Animated.View>
-
+          <Animated.View style={[styles.character, { transform: decompose2d(character) }]}></Animated.View>
+        </ScrollView>
       </View>
 
       {/* <TouchableOpacity style={styles.pageTwoBtn} onPress={()=> Actions.popTo("loginPage")}>
@@ -238,8 +247,9 @@ export default GamePlayPage = () => {
         </Grid>
         {/* <Text>@ game play page</Text> */}
       </View>
-
+      </ImageBackground>
     </View>
+  
   );
 }
 const styles = StyleSheet.create({
@@ -306,7 +316,7 @@ const styles = StyleSheet.create({
     height: 70,
   },
   arrowBox: {
-    backgroundColor: 'rgba(20,174,255,0.51)',
+    backgroundColor: 'rgba(255,255,255,0.3)',
     justifyContent: 'center',
     alignContent: 'center',
     alignItems: "center",
@@ -337,9 +347,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  monster:{
+  monster: {
     position: 'absolute',
-    width:70,
-    height:70,
+    width: 70,
+    height: 70,
+  },
+  map: {
+    height: 340,
+    width: 1200
   }
 })

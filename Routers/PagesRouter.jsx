@@ -12,9 +12,9 @@ export default class PagesRouter extends Component {
     return (
       <Router>
         <Scene key="root">
-          <Scene key="loginPage" component={LoginPage} title="Login" hideNavBar={true} initial={true} />
+          <Scene key="loginPage" component={LoginPage} title="Login" hideNavBar={true}  />
           <Scene key="storyPage" component={StoryPage} title="Story" hideNavBar={true} />
-          <Scene key="gamePlayPage" component={GamePlayPage} title="MainGame" hideNavBar={true} />
+          <Scene key="gamePlayPage" component={GamePlayPage} title="MainGame" hideNavBar={true} initial={true}/>
         </Scene>
       </Router>
     )
