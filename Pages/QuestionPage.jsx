@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import bgimage from '../assets/backgrounds/mainBg.jpg'
 import cat from '../img/cat.png'
 
@@ -28,7 +29,7 @@ const Problem1 = [
 
 
 const Item = ({ choice }) => (
-  <TouchableOpacity style={styles.item} >
+  <TouchableOpacity style={styles.item} onPress={() => Actions.correctquestionPage()}>
     <Text style={styles.choice}>{choice}</Text>
 
   </TouchableOpacity >
