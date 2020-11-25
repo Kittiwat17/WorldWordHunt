@@ -50,11 +50,11 @@ export default class LoginPage extends Component {
               <Text style={styles.textstyle}>PLAY</Text>
             </TouchableOpacity>
           </View>
-          <View>
+          {/* <View>
             <Text style={{margin:10}}>
               User list : {this.state.name}
             </Text>
-          </View>
+          </View> */}
         </View>
       </ImageBackground>
     )

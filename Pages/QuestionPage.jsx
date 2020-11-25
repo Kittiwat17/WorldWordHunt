@@ -8,8 +8,12 @@ import bgimage from '../assets/backgrounds/mainBg.jpg'
 const problem = [
   {
     proposition: 'Cat',
-    anwser: 'แมว'
-  }
+    answer: 'แมว'
+  },
+  // {
+  //   Proposition:'Ant',
+  //   answer:'มด'
+  // }
 ]
 
 const choice1 = [
@@ -24,9 +28,9 @@ const choice1 = [
   },
 ]
 
-const Itemp = ({ anwser }) => (
+const Itemp = ({ answer }) => (
   <TouchableOpacity style={styles.item2} onPress={() => Actions.correctquestionPage()}>
-    <Text style={styles.choice}>{anwser}</Text>
+    <Text style={styles.choice}>{answer}</Text>
   </TouchableOpacity >
 )
 
@@ -40,7 +44,7 @@ export default function QuestionPage() {
     <Item choice={item.choice} />
   );
   const renderItem2 = ({ item }) => (
-    <Itemp anwser={item.anwser}></Itemp>
+    <Itemp answer={item.answer}></Itemp>
   )
   return (
     <ImageBackground source={bgimage} style={styles.background}>
