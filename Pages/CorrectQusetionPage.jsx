@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import bgimage from '../assets/backgrounds/mainBg.jpg'
+import bgimage from '../assets/backgrounds/correctBg.jpg'
 import correct from '../img/correrct.png'
 
 export default function CorrectQuestionPage() {
