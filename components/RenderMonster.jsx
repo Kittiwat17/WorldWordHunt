@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dimensions, View, Image, Text, ScrollView, TouchableOpacity, StyleSheet, ImageBackground } from "react-native";
+import { StyleSheet } from "react-native";
 import Animated from "react-native-reanimated";
 import { decompose2d, tween2d, useLoop } from "react-native-redash";
 import { url } from 'inspector';
@@ -12,8 +12,8 @@ const monster = [
 export default RenderMonster = (prop) => {
     return (
         <>
-            <Animated.Image style={[styles.monster, { transform: decompose2d(monster) }]} source={require('../assets/alphabet/A.png')}></Animated.Image>
-            <Animated.Image style={[styles.monster, { transform: decompose2d(monster) }]} source={require('../assets/alphabet/N.png')}></Animated.Image>
+            {/* <Animated.Image style={[styles.monster, { transform: decompose2d(monster) }]} source={require('../assets/alphabet/A.png')}></Animated.Image>
+            <Animated.Image style={[styles.monster, { transform: decompose2d(monster) }]} source={require('../assets/alphabet/N.png')}></Animated.Image> */}
             <Animated.Image style={[styles.monster, { transform: decompose2d(monster) }]} source={require('../assets/alphabet/T.png')}></Animated.Image>
         </>
     );

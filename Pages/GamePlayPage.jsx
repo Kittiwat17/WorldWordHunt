@@ -5,7 +5,7 @@ import { Dimensions, View, Image, Text, ScrollView, TouchableOpacity, StyleSheet
 import { Actions } from 'react-native-router-flux';
 import { green } from 'ansi-colors';
 import Animated from "react-native-reanimated";
-import { decompose2d, tween2d, useLoop } from "react-native-redash";
+import { decompose2d } from "react-native-redash";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 //timeer
@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { Col, Row, Grid } from "react-native-easy-grid";
 
-import RenderMonster from '../components/RenderMonster';
+// import RenderMonster from '../components/RenderMonster';
 
 const { width } = Dimensions.get("window");
 const ratio = 228 / 362;
@@ -35,8 +35,9 @@ export default GamePlayPage = () => {
 
   const [characterMoveX, setCharacterMoveX] = new useState(540);
   const [characterMoveY, setCharacterMoveY] = new useState(400);
-
-
+  const [scaleA, setScaleA] = new useState(0.8);
+  const [scaleB, setScaleB] = new useState(0.8);
+  const [scaleC, setScaleC] = new useState(0.8);
 
   const moveCharacter = () => {
     arrowBox.forEach(moveArrow => {
@@ -78,7 +79,28 @@ export default GamePlayPage = () => {
         default:
       }
     });
+    checkHit()
     setArrowBox([])
+
+  }
+
+  const checkHit = () => {
+
+    if (characterMoveX == 735 && characterMoveY == 355) {
+      setScaleA(0)
+      if (scaleA < 0.8) {
+        Actions.questionPage();
+      }
+    }
+    else if (characterMoveX == 280 && characterMoveY == 340) {
+      setScaleB(0)
+    }
+    else if (characterMoveX == 540 && characterMoveY == 190) {
+      setScaleC(0)
+    }
+    else if (characterMoveX == 540 && characterMoveY == 250) {
+
+    }
 
   }
 
@@ -132,9 +154,24 @@ export default GamePlayPage = () => {
     // { skewX: 0.3 },
     // { scale: 0.8 },
   ];
-  const monster = [
-    { translateY: 300 },
-    { translateX: 200 },
+  const monster1 = [
+    { translateY: 360 },
+    { translateX: 745 },
+    { scale: scaleA }
+  ];
+  const monster2 = [
+    { translateY: 345 },
+    { translateX: 280 },
+    { scale: scaleB }
+  ];
+  const monster3 = [
+    { translateY: 200 },
+    { translateX: 540 },
+    { scale: scaleC }
+  ];
+  const fakeMonster = [
+    { translateY: 265 },
+    { translateX: 540 },
   ];
   const map = [
     { translateY: 200 },
@@ -152,7 +189,7 @@ export default GamePlayPage = () => {
 
             </TouchableOpacity>
           </View>
-          <Text style={{ flex: 0.4, textAlign: "center", fontSize: 30 }}>TIME 00:00
+          <Text style={{ flex: 0.4, textAlign: "center", fontSize: 30 }}>TIME {scaleA}
        </Text>
           <View style={{ flex: 0.3 }}>
 
@@ -165,8 +202,9 @@ export default GamePlayPage = () => {
           <ScrollView style={{
             padding: 20
           }}>
-            <RenderMonster />
+            {/* <RenderMonster key={1}/> */}
             <Animated.Image style={[styles.map, { transform: decompose2d(map) }]} source={require("../assets/floorbox.png")}></Animated.Image>
+
             {/* <Animated.View style={{ transform: decompose2d(centerMap) }}>
           <Image style={styles.CENTER_MAP} />
         </Animated.View>
@@ -177,7 +215,10 @@ export default GamePlayPage = () => {
           <Image style={styles.card} />
         </Animated.View> */}
 
-            <Animated.Image style={[styles.monster, { transform: decompose2d(monster) }]} source={require('../assets/alphabet/A.png')}></Animated.Image>
+            <Animated.Image style={[styles.monster, { transform: decompose2d(monster1) }]} source={require('../assets/alphabet/A.png')}></Animated.Image>
+            <Animated.Image style={[styles.monster, { transform: decompose2d(monster2) }]} source={require('../assets/alphabet/N.png')}></Animated.Image>
+            <Animated.Image style={[styles.monster, { transform: decompose2d(monster3) }]} source={require('../assets/alphabet/T.png')}></Animated.Image>
+            <Animated.Image style={[styles.monster, { transform: decompose2d(fakeMonster) }]} source={require('../assets/alphabet/S.png')}></Animated.Image>
 
             <Animated.Image style={[styles.character, { transform: decompose2d(character) }]} source={require('../assets/dino.png')}></Animated.Image>
           </ScrollView>
@@ -260,7 +301,7 @@ const styles = StyleSheet.create({
     width: 70,
     height: 70,
     position: "absolute",
-    zIndex:999
+    zIndex: 999
   },
   container: {
     flex: 1,
