@@ -5,8 +5,14 @@ import { Actions } from 'react-native-router-flux';
 import bgimage from '../assets/backgrounds/mainBg.jpg'
 // import Zebra from '../img/zebra.png'
 
-//ถ้าเลือกแล้วข้อไหนมีid == 1 จะไปหน้า correct
-const Problem1 = [
+const problem = [
+  {
+    proposition: 'Zrbra',
+    anwser: 'ม้าลาย'
+  }
+]
+
+const choice1 = [
   {
     choice: 'แมว'
   },
@@ -18,7 +24,11 @@ const Problem1 = [
   },
 ]
 
-
+const Itemp = ({ anwser }) => (
+  <TouchableOpacity style={styles.item2} onPress={() => Actions.correctquestionPage()}>
+    <Text style={styles.choice}>{anwser}</Text>
+  </TouchableOpacity >
+)
 
 const Item = ({ choice }) => (
   <TouchableOpacity style={styles.item} onPress={() => Actions.incorrectquestionPage()}>
@@ -29,6 +39,9 @@ export default function QuestionPage() {
   const renderItem = ({ item }) => (
     <Item choice={item.choice} />
   );
+  const renderItem2 = ({ item }) => (
+    <Itemp anwser={item.anwser}></Itemp>
+  )
   return (
     <ImageBackground source={bgimage} style={styles.background}>
       {/* <View style={styles.Topic}>
@@ -45,15 +58,20 @@ export default function QuestionPage() {
       <View style={styles.BoxQ}>
         <SafeAreaView style={styles.container}>
           <FlatList
-            data={Problem1}
+            data={choice1}
             renderItem={renderItem}
             style={styles.flat}
           />
         </SafeAreaView>
         <View style={styles.boxincor}>
-          <TouchableOpacity style={styles.item2} onPress={() => Actions.correctquestionPage()}>
+          {/* <TouchableOpacity style={styles.item2} onPress={() => Actions.correctquestionPage()}>
             <Text style={styles.choice2}>ม้าลาย</Text>
-        </TouchableOpacity >
+          </TouchableOpacity > */}
+          <FlatList
+            data={problem}
+            renderItem={renderItem2}
+            style={styles.flat}
+          />
         </View>
         <StatusBar style="auto" />
       </View>
@@ -69,7 +87,7 @@ const styles = StyleSheet.create({
   },
   BoxQ: {
     width: 300,
-    height: 360,
+    height: 365,
     backgroundColor: 'rgba(0, 0, 0, 0.10)',
     borderRadius: 25,
   },
@@ -93,9 +111,9 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 16,
     borderRadius: 25,
-    width:230,
+    width: 230,
     height: 65,
-    marginTop:-10
+    marginTop: 1
   },
   title: {
     fontSize: 32,
@@ -105,12 +123,12 @@ const styles = StyleSheet.create({
     margin: 20
   },
   boxPro: {
-    margin:10,
-    marginTop:-60
+    margin: 10,
+    marginTop: -60
   },
   Pro: {
     fontSize: 100,
-    borderBottomWidth:3
+    borderBottomWidth: 3,
   },
   // cat: {
   //   width: 190,
@@ -126,7 +144,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold'
   },
-  boxincor:{
-    alignItems:'center'
-  }
+  boxincor: {
+    alignItems: 'center',
+    marginTop:-30
+  },
+
 });
