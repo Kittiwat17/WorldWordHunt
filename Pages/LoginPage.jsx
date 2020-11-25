@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import { Actions } from 'react-native-router-flux';
 import { green } from 'ansi-colors';
-import { View, TextInput, StyleSheet, TouchableOpacity, ImageBackground, Text } from 'react-native'
+import { View, TextInput, StyleSheet, TouchableOpacity, ImageBackground, Text, Image, Dimensions } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage';
-import bgimage from '../assets/backgrounds/mainBg.jpg'
+import bgimage from '../assets/backgrounds/loginBg.jpg'
 
 export default class LoginPage extends Component {
   //จะต้องเก็บแบบArray List เก็บได้มากกว่า1
@@ -34,7 +34,11 @@ export default class LoginPage extends Component {
       <ImageBackground source={bgimage} style={styles.background}>
         <View style={styles.container}>
           <View style={styles.textContainer}>
-            <Text style={styles.logotext}>World Word Hunt</Text>
+          <Image
+            style={{ width: Dimensions.get('window').width * 0.95, height: Dimensions.get('window').height / 4.2, borderRadius: 8, marginTop: 25}}
+            source={require("../assets/logo.png")}
+          />
+            {/* <Text style={styles.logotext}>World Word Hunt</Text> */}
           </View>
           <View style={styles.TInput}>
             <TextInput style={styles.textInput}
