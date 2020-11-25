@@ -12,7 +12,7 @@ const MyHome = () => {
               </View>
               <View style={styles.TInput}>
                  <TouchableOpacity style={styles.btnlogin}>
-                    <Text style={styles.textstyle} onPress={() => Actions.MyHome()}>PLAY</Text>
+                    <Text style={styles.textstyle} onPress={() => Actions.loginPage()}>PLAY</Text>
                  </TouchableOpacity>
               </View>
            </View>

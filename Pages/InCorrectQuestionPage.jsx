@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import bgimage from '../assets/backgrounds/mainBg.jpg'
+import bgimage from '../assets/backgrounds/inCorrectBg.jpg'
 import incorrect from '../img/incorrect.png'
 
 export default function InCorrectQuestionPage() {
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   TopicQ: {
     fontSize: 50,
     fontWeight: 'bold',
-    color: 'red',
+    color: 'white',
     borderBottomWidth: 3,
     margin: 10,
     width: 250,
