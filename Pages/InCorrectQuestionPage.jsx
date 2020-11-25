@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import bgimage from '../assets/backgrounds/mainBg.jpg'
 import incorrect from '../img/incorrect.png'
 
@@ -18,7 +19,7 @@ export default function InCorrectQuestionPage() {
           <Image source={incorrect} style={styles.imagecorrect} />
         </View>
         <View style={styles.con}>
-          <TouchableOpacity style={styles.btnlogin}>
+          <TouchableOpacity style={styles.btnlogin} onPress={() => Actions.questionPage()}>
             <Text style={styles.textstyle}>Replay</Text>
           </TouchableOpacity>
         </View>
