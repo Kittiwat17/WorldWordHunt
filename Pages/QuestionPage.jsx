@@ -3,21 +3,18 @@ import React from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, FlatList, SafeAreaView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import bgimage from '../assets/backgrounds/mainBg.jpg'
-import Zebra from '../img/zebra.png'
+// import Zebra from '../img/zebra.png'
 
 //ถ้าเลือกแล้วข้อไหนมีid == 1 จะไปหน้า correct
 const Problem1 = [
   {
-    id: '1',
-    choice: 'cat'
+    choice: 'แมว'
   },
   {
-    id: '0',
-    choice: 'dog'
+    choice: 'สุนัข'
   },
   {
-    id: '0',
-    choice: 'rat'
+    choice: 'หนู'
   },
 ]
 
@@ -34,17 +31,15 @@ export default function QuestionPage() {
   );
   return (
     <ImageBackground source={bgimage} style={styles.background}>
-      <View style={styles.Topic}>
+      {/* <View style={styles.Topic}>
         <Text style={styles.TopicQ}>
           Question
         </Text>
-      </View>
-      <View style={styles.cath}>
-        <Image source={Zebra} style={styles.cat}></Image>
-      </View>
+      </View> */}
+
       <View style={styles.boxPro}>
         <Text style={styles.Pro}>
-          This is a ...
+          Zebra
         </Text>
       </View>
       <View style={styles.BoxQ}>
@@ -57,7 +52,7 @@ export default function QuestionPage() {
         </SafeAreaView>
         <View style={styles.boxincor}>
           <TouchableOpacity style={styles.item2} onPress={() => Actions.correctquestionPage()}>
-            <Text style={styles.choice2}>Zebra</Text>
+            <Text style={styles.choice2}>ม้าลาย</Text>
         </TouchableOpacity >
         </View>
         <StatusBar style="auto" />
@@ -78,13 +73,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.10)',
     borderRadius: 25,
   },
-  Topic: {
+  // Topic: {
 
-  },
-  TopicQ: {
-    fontSize: 40,
-    fontWeight: 'bold',
-  },
+  // },
+  // TopicQ: {
+  //   fontSize: 40,
+  //   fontWeight: 'bold',
+  // },
   item: {
     backgroundColor: 'rgba(0, 70, 150, 0.29)',
     padding: 20,
@@ -110,15 +105,17 @@ const styles = StyleSheet.create({
     margin: 20
   },
   boxPro: {
-    margin: 10,
+    margin:10,
+    marginTop:-60
   },
   Pro: {
-    fontSize: 20
+    fontSize: 100,
+    borderBottomWidth:3
   },
-  cat: {
-    width: 190,
-    height: 190
-  },
+  // cat: {
+  //   width: 190,
+  //   height: 190
+  // },
   choice: {
     fontSize: 20,
     textAlign: 'center',
