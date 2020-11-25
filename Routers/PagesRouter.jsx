@@ -8,6 +8,8 @@ import MyHome from "../Pages/Home";
 import QuestionPage from '../Pages/QuestionPage';
 import CorrectQuestionPage from '../Pages/CorrectQusetionPage';
 import InCorrectQuestionPage from '../Pages/InCorrectQuestionPage';
+import FailPage from "../Pages/FailPage";
+
 
 export default class PagesRouter extends Component {
 
@@ -15,12 +17,13 @@ export default class PagesRouter extends Component {
     return (
       <Router>
         <Scene key="root">
+          <Scene key="FailPage" component={FailPage} title="InCorrectQuestion" hideNavBar={true} />
           <Scene key="questionPage" component={QuestionPage} title="Question" hideNavBar={true} />
           <Scene key="correctquestionPage" component={CorrectQuestionPage} title="CorrectQuestion" hideNavBar={true} />
           <Scene key="incorrectquestionPage" component={InCorrectQuestionPage} title="InCorrectQuestion" hideNavBar={true} />
-          <Scene key="loginPage" component={LoginPage} title="Login" hideNavBar={true} initial={true}/>
+          <Scene key="loginPage" component={LoginPage} title="Login" hideNavBar={true} initial={true} />
           <Scene key="storyPage" component={StoryPage} title="Story" hideNavBar={true} />
-          <Scene key="gamePlayPage" component={GamePlayPage} title="MainGame" hideNavBar={true}  />
+          <Scene key="gamePlayPage" component={GamePlayPage} title="MainGame" hideNavBar={true} />
         </Scene>
       </Router>
     )

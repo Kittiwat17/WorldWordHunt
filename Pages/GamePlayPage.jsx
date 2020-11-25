@@ -38,6 +38,7 @@ export default GamePlayPage = () => {
   const [scaleA, setScaleA] = new useState(0.8);
   const [scaleB, setScaleB] = new useState(0.8);
   const [scaleC, setScaleC] = new useState(0.8);
+  const [stack, setStack] = new useState([]);
 
   const moveCharacter = () => {
     arrowBox.forEach(moveArrow => {
@@ -79,18 +80,17 @@ export default GamePlayPage = () => {
         default:
       }
     });
-    checkHit()
+    
     setArrowBox([])
-
+    checkHit()
   }
 
   const checkHit = () => {
-
-    if (characterMoveX == 735 && characterMoveY == 355) {
+    if (scaleA == 0 && scaleB == 0 && scaleC == 0) {
+      Actions.questionPage();
+    }
+    else if (characterMoveX == 735 && characterMoveY == 355) {
       setScaleA(0)
-      if (scaleA < 0.8) {
-        Actions.questionPage();
-      }
     }
     else if (characterMoveX == 280 && characterMoveY == 340) {
       setScaleB(0)
@@ -99,7 +99,7 @@ export default GamePlayPage = () => {
       setScaleC(0)
     }
     else if (characterMoveX == 540 && characterMoveY == 250) {
-
+      Actions.FailPage()
     }
 
   }
@@ -190,7 +190,7 @@ export default GamePlayPage = () => {
             </TouchableOpacity>
           </View>
           <Text style={{ flex: 0.4, textAlign: "center", fontSize: 30 }}>TIME {scaleA}
-       </Text>
+          </Text>
           <View style={{ flex: 0.3 }}>
 
             <Text style={{ textAlign: "right" }}>

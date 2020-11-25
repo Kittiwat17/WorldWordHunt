@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import bgimage from '../assets/backgrounds/inCorrectBg.jpg'
 import incorrect from '../img/incorrect.png'
 
-export default function InCorrectQuestionPage() {
+export default function FailPage() {
 
   return (
     <ImageBackground source={bgimage} style={styles.background}>
@@ -19,7 +19,7 @@ export default function InCorrectQuestionPage() {
           <Image source={incorrect} style={styles.imagecorrect} />
         </View>
         <View style={styles.con}>
-          <TouchableOpacity style={styles.btnlogin} onPress={() => Actions.GamePlayPage()}>
+          <TouchableOpacity style={styles.btnlogin} onPress={() => Actions.pop()}>
             <Text style={styles.textstyle}>Replay</Text>
           </TouchableOpacity>
         </View>
