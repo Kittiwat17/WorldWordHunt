@@ -76,12 +76,12 @@ const App = () => {
       <View style={styles.header}>
         <View style={{ flex: 0.3, textAlign: "left" }}>
           <TouchableOpacity onPress={() => Actions.loginPage()}>
-            <Text style={{ fontSize: 25 }}>{"< |"}</Text>
+            <Text style={{ fontSize: 25 , marginTop:25}}>{"< |"}</Text>
           </TouchableOpacity>
         </View>
-        <Text style={{ flex: 0.4, textAlign: "center", fontSize: 40 }}>
+        <Text style={{ flex: 0.4, textAlign: "center", fontSize: 40 , marginTop:20}}>
         {name}
-          Story
+          .Story
         </Text>
         <View>
           <Text style={{ flex: 0.3, textAlign: "right" }}></Text>
