@@ -80,8 +80,7 @@ const App = () => {
           </TouchableOpacity>
         </View>
         <Text style={{ flex: 0.4, textAlign: "center", fontSize: 40 , marginTop:20}}>
-        {name}
-          .Story
+          Story {name}
         </Text>
         <View>
           <Text style={{ flex: 0.3, textAlign: "right" }}></Text>
