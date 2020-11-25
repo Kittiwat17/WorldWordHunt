@@ -7,14 +7,14 @@ import bgimage from '../assets/backgrounds/mainBg.jpg'
 
 const problem = [
   {
-    proposition: 'Zrbra',
-    anwser: 'ม้าลาย'
+    proposition: 'Cat',
+    anwser: 'แมว'
   }
 ]
 
 const choice1 = [
   {
-    choice: 'แมว'
+    choice: 'นก'
   },
   {
     choice: 'สุนัข'
@@ -52,7 +52,7 @@ export default function QuestionPage() {
 
       <View style={styles.boxPro}>
         <Text style={styles.Pro}>
-          Zebra
+          C A T
         </Text>
       </View>
       <View style={styles.BoxQ}>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   },
   BoxQ: {
     width: 300,
-    height: 365,
+    height: 375,
     backgroundColor: 'rgba(0, 0, 0, 0.10)',
     borderRadius: 25,
   },
