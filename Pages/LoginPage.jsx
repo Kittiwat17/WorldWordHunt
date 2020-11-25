@@ -14,16 +14,18 @@ export default class LoginPage extends Component {
   array = {
     
   }
-  componentDidMount = () => AsyncStorage.getItem('name').then((value) => this.setState({ 'name': value }))
+  // componentDidMount = () => AsyncStorage.getItem('name').then((value) => this.setState({ 'name': value }))
 
 
   setName = (value) => {
     //จะต้องมีเช็คว่า เป็นAccountที่มีอยู่ หรือเพิ่มเข้ามาใหม่
     //ถ้ามีอยู่แล้วจะดึง Account นั้นมาเลย
-    AsyncStorage.setItem('name', value);//ถ้าใหม่จะsetเพิ่มทันที
+    
     this.setState({ 'name': value });
   }
-
+  login = () =>{
+    AsyncStorage.setItem('name', this.state.name);//ถ้าใหม่จะsetเพิ่มทันที
+  }
   //หลังจากกดปุ่ม Play จะไปหน้าถัดไปของ Account นั้น
 
 
@@ -42,7 +44,9 @@ export default class LoginPage extends Component {
               autoCapitalize='none'
               maxLength={10}
               onChangeText={this.setName} />
-            <TouchableOpacity style={styles.btnlogin} onPress={() => Actions.storyPage(this.state.name)}>
+            <TouchableOpacity style={styles.btnlogin} onPress={() => {
+            this.login()
+              Actions.storyPage()}}>
               <Text style={styles.textstyle}>PLAY</Text>
             </TouchableOpacity>
           </View>

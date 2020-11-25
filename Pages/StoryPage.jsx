@@ -1,5 +1,6 @@
 import { Row } from "native-base";
 import React, { Component, useState } from "react";
+// import AsyncStorage from '@react-native-community/async-storage';
 import {
   View,
   Text,
@@ -8,6 +9,7 @@ import {
   FlatList,
   Image,
   Dimensions,
+  AsyncStorage
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Actions } from "react-native-router-flux";
@@ -36,6 +38,7 @@ const DATA = [
 ];
 
 const Item = ({ item, onPress, style, separators }) => {
+ 
   if (item.title == "Coming Soon") {
     return (
       <View style={[styles.item, style]}>
@@ -44,11 +47,13 @@ const Item = ({ item, onPress, style, separators }) => {
     );
   } else {
     return (
-      <TouchableOpacity onPress={() => Actions.gamePlayPage()}>
+      <TouchableOpacity onPress={() => 
+      Actions.gamePlayPage()
+      }>
         <View style={{ justifyContent: 'center', alignItems: 'center', paddingVertical: 20}}>
           <Image
             style={{ width: Dimensions.get('window').width * 0.95, height: Dimensions.get('window').height / 4.2, borderRadius: 8}}
-            source={require("../assets/card1.png")}
+            source={require("../assets/list1.png")}
           />
         </View>
       </TouchableOpacity>
@@ -58,7 +63,11 @@ const Item = ({ item, onPress, style, separators }) => {
 
 const App = () => {
   const [selectedId, setSelectedId] = useState(null);
-
+  const [name, setName] = useState();
+  // AsyncStorage.getItem('name').then((value) => setName(value[0]))
+ 
+  AsyncStorage.getItem('name').then((value)=> setName(value));
+    
   const renderItem = ({ item }) => {
     return <Item item={item} onPress={() => setSelectedId(item.id)} />;
   };
@@ -71,6 +80,7 @@ const App = () => {
           </TouchableOpacity>
         </View>
         <Text style={{ flex: 0.4, textAlign: "center", fontSize: 40 }}>
+        {name}
           Story
         </Text>
         <View>
