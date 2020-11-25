@@ -15,12 +15,12 @@ export default class PagesRouter extends Component {
     return (
       <Router>
         <Scene key="root">
-          <Scene key="questionPage" component={QuestionPage} title="Question" hideNavBar={true} initial={true}/>
+          <Scene key="questionPage" component={QuestionPage} title="Question" hideNavBar={true} />
           <Scene key="correctquestionPage" component={CorrectQuestionPage} title="CorrectQuestion" hideNavBar={true} />
           <Scene key="incorrectquestionPage" component={InCorrectQuestionPage} title="InCorrectQuestion" hideNavBar={true} />
           <Scene key="loginPage" component={LoginPage} title="Login" hideNavBar={true} />
           <Scene key="storyPage" component={StoryPage} title="Story" hideNavBar={true} />
-          <Scene key="gamePlayPage" component={GamePlayPage} title="MainGame" hideNavBar={true}  />
+          <Scene key="gamePlayPage" component={GamePlayPage} title="MainGame" hideNavBar={true} initial={true} />
         </Scene>
       </Router>
     )

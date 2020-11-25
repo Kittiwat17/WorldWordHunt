@@ -15,6 +15,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { Col, Row, Grid } from "react-native-easy-grid";
 
+import RenderMonster from '../components/RenderMonster';
+
 const { width } = Dimensions.get("window");
 const ratio = 228 / 362;
 export const CARD_WIDTH = width * 0.8;
@@ -28,17 +30,19 @@ export const CENTER_CARD_HEIGHT = CENTER_CARD_WIDTH;
 
 export default GamePlayPage = () => {
   const arrowColor = "#222831";
-  const moveLenght = 10;
+  const moveLenght = 65;
   const [arrowBox, setArrowBox] = new useState([]);
 
-  const [characterMoveX, setCharacterMoveX] = new useState(0);
-  const [characterMoveY, setCharacterMoveY] = new useState(140);
+  const [characterMoveX, setCharacterMoveX] = new useState(540);
+  const [characterMoveY, setCharacterMoveY] = new useState(400);
+
+
 
   const moveCharacter = () => {
     arrowBox.forEach(moveArrow => {
       switch (moveArrow) {
         case "arrow-bottom-left-thick":
-          setCharacterMoveY(oldPosition => oldPosition + moveLenght);
+          setCharacterMoveY(oldPosition => oldPosition + 15);
           if (characterMoveX < moveLenght) {
             setCharacterMoveX(oldPosition => -(moveLenght - oldPosition));
             break;
@@ -52,23 +56,23 @@ export default GamePlayPage = () => {
           } else if (characterMoveX > moveLenght) {
             setCharacterMoveX(oldPosition => oldPosition - moveLenght);
           }
-          if (characterMoveY < moveLenght) {
-            setCharacterMoveY(oldPosition => -(moveLenght - oldPosition));
-          } else if (characterMoveY > moveLenght) {
-            setCharacterMoveY(oldPosition => oldPosition - moveLenght);
+          if (characterMoveY < 15) {
+            setCharacterMoveY(oldPosition => -(15 - oldPosition));
+          } else if (characterMoveY > 15) {
+            setCharacterMoveY(oldPosition => oldPosition - 15);
 
           }
           break;
         case "arrow-top-right-thick":
           setCharacterMoveX(oldPosition => oldPosition + moveLenght);
-          if (characterMoveY < moveLenght) {
-            setCharacterMoveY(oldPosition => -(moveLenght - oldPosition));
+          if (characterMoveY < 15) {
+            setCharacterMoveY(oldPosition => -(15 - oldPosition));
             break;
           }
-          setCharacterMoveY(oldPosition => oldPosition - moveLenght);
+          setCharacterMoveY(oldPosition => oldPosition - 15);
           break;
         case "arrow-bottom-right-thick":
-          setCharacterMoveY(oldPosition => oldPosition + moveLenght);
+          setCharacterMoveY(oldPosition => oldPosition + 15);
           setCharacterMoveX(oldPosition => oldPosition + moveLenght);
           break;
         default:
@@ -129,42 +133,41 @@ export default GamePlayPage = () => {
     // { scale: 0.8 },
   ];
   const monster = [
-    { translateY: 100 },
-    { translateX: 50 },
+    { translateY: 300 },
+    { translateX: 200 },
   ];
   const map = [
     { translateY: 200 },
     { translateX: -25 },
   ];
-  
-
   // source={require("../assets/card1.png")}
   return (
     <View style={styles.container}>
-    <ImageBackground style={{zIndex:-1}} source={require("../assets/backgrounds/mainBg.jpg")}>
-      <View style={styles.navbar}></View>
-      <View style={styles.navbar}>
-        <View style={{ flex: 0.3, textAlign: "left" }}>
-          <TouchableOpacity onPress={() => Actions.popTo("loginPage")}>
-            <Icon name="arrow-left-bold" size={40} color={"#222"} />
+      <ImageBackground style={{ zIndex: -1 }} source={require("../assets/backgrounds/mainBg.jpg")}>
+        <View style={styles.navbar}></View>
+        <View style={styles.navbar}>
+          <View style={{ flex: 0.3, textAlign: "left" }}>
+            <TouchableOpacity onPress={() => Actions.popTo("loginPage")}>
+              <Icon name="arrow-left-bold" size={40} color={"#222"} />
 
-          </TouchableOpacity>
-        </View>
-        <Text style={{ flex: 0.4, textAlign: "center", fontSize: 30 }}>TIME 00:00
+            </TouchableOpacity>
+          </View>
+          <Text style={{ flex: 0.4, textAlign: "center", fontSize: 30 }}>TIME 00:00
        </Text>
-        <View style={{ flex: 0.3 }}>
+          <View style={{ flex: 0.3 }}>
 
-          <Text style={{ textAlign: "right" }}>
-            <Icon name="lightbulb-outline" size={40} color={arrowColor} />
-          </Text>
+            <Text style={{ textAlign: "right" }}>
+              <Icon name="lightbulb-outline" size={40} color={arrowColor} />
+            </Text>
+          </View>
         </View>
-      </View>
-      <View style={styles.content}>
-        <ScrollView  style={{
-          padding:20
-        }}>
-          <Animated.Image style={[styles.map, { transform: decompose2d(map) }]} source={require("../assets/floorbox.png")}></Animated.Image>
-          {/* <Animated.View style={{ transform: decompose2d(centerMap) }}>
+        <View style={styles.content}>
+          <ScrollView style={{
+            padding: 20
+          }}>
+            <RenderMonster />
+            <Animated.Image style={[styles.map, { transform: decompose2d(map) }]} source={require("../assets/floorbox.png")}></Animated.Image>
+            {/* <Animated.View style={{ transform: decompose2d(centerMap) }}>
           <Image style={styles.CENTER_MAP} />
         </Animated.View>
         <Animated.View style={{ transform: decompose2d(transform2) }}>
@@ -174,90 +177,90 @@ export default GamePlayPage = () => {
           <Image style={styles.card} />
         </Animated.View> */}
 
-          <Animated.Image style={[styles.monster, { transform: decompose2d(monster) }]} source={require('../assets/alphabet/A.png')}></Animated.Image>
+            <Animated.Image style={[styles.monster, { transform: decompose2d(monster) }]} source={require('../assets/alphabet/A.png')}></Animated.Image>
 
-          <Animated.View style={[styles.character, { transform: decompose2d(character) }]}></Animated.View>
-        </ScrollView>
-      </View>
+            <Animated.Image style={[styles.character, { transform: decompose2d(character) }]} source={require('../assets/dino.png')}></Animated.Image>
+          </ScrollView>
+        </View>
 
-      {/* <TouchableOpacity style={styles.pageTwoBtn} onPress={()=> Actions.popTo("loginPage")}>
+        {/* <TouchableOpacity style={styles.pageTwoBtn} onPress={()=> Actions.popTo("loginPage")}>
             <Text>go to login page</Text>
         </TouchableOpacity> */}
 
-      <View style={styles.copyRight}>
-        <Grid>
-          <Col>
-            <Row style={styles.selectBox} size={1}>
-              <TouchableOpacity style={styles.arrowBox} onPress={() => { removeArrow(0) }}>
-                <Icon name={arrowBox[0]} size={40} color={arrowColor} /></TouchableOpacity>
-            </Row>
-            <Row style={styles.selectBtn} size={1}>
-              <TouchableOpacity style={styles.arrowBtn} onPress={() => { selectArrow("arrow-bottom-left-thick") }}>
-                <Icon name="arrow-bottom-left-thick" size={40} color={arrowColor} />
-              </TouchableOpacity>
-            </Row>
-          </Col>
-          <Col>
+        <View style={styles.copyRight}>
+          <Grid>
+            <Col>
+              <Row style={styles.selectBox} size={1}>
+                <TouchableOpacity style={styles.arrowBox} onPress={() => { removeArrow(0) }}>
+                  <Icon name={arrowBox[0]} size={40} color={arrowColor} /></TouchableOpacity>
+              </Row>
+              <Row style={styles.selectBtn} size={1}>
+                <TouchableOpacity style={styles.arrowBtn} onPress={() => { selectArrow("arrow-bottom-left-thick") }}>
+                  <Icon name="arrow-bottom-left-thick" size={40} color={arrowColor} />
+                </TouchableOpacity>
+              </Row>
+            </Col>
+            <Col>
 
-            <Row style={styles.selectBox} size={1}>
-              <TouchableOpacity style={styles.arrowBox} onPress={() => { removeArrow(1) }}>
-                <Icon name={arrowBox[1]} size={40} color={arrowColor} /></TouchableOpacity>
-            </Row>
-            <Row style={styles.selectBtn} size={1}>
-              <TouchableOpacity style={styles.arrowBtn} onPress={() => { selectArrow("arrow-bottom-right-thick") }}>
-                <Icon name="arrow-bottom-right-thick" size={40} color={arrowColor} />
-              </TouchableOpacity>
-            </Row>
-          </Col>
-          <Col>
-            <Row style={styles.selectBox} size={1}>
-              <TouchableOpacity style={styles.arrowBox} onPress={() => { removeArrow(2) }}>
-                <Icon name={arrowBox[2]} size={40} color={arrowColor} /></TouchableOpacity>
-            </Row>
-            <Row style={styles.selectBtn} size={1}>
-              <TouchableOpacity style={styles.arrowBtn} onPress={() => { selectArrow("arrow-top-right-thick") }}>
-                <Icon name="arrow-top-right-thick" size={40} color={arrowColor} />
-              </TouchableOpacity>
-            </Row>
-          </Col>
-          <Col>
-            <Row style={styles.selectBox} size={1}>
-              <TouchableOpacity style={styles.arrowBox} onPress={() => { removeArrow(3) }}>
-                <Icon name={arrowBox[3]} size={40} color={arrowColor} /></TouchableOpacity>
-            </Row>
-            <Row style={styles.selectBtn} size={1}>
-              <TouchableOpacity style={styles.arrowBtn} onPress={() => { selectArrow("arrow-top-left-thick") }}>
-                <Icon name="arrow-top-left-thick" size={40} color={arrowColor} />
-              </TouchableOpacity>
-            </Row>
-          </Col>
-          <Col>
-            <Row style={styles.selectBox} size={1}>
-              <TouchableOpacity style={styles.clearBtn} onPress={() => { setArrowBox([]) }}>
-                <Text>CLEAR</Text>
-              </TouchableOpacity>
-            </Row>
-            <Row style={styles.selectBtn} size={1}>
-              <TouchableOpacity style={styles.goBtn} onPress={() => { moveCharacter() }}>
-                <Text>GO</Text>
-              </TouchableOpacity>
-            </Row>
-          </Col>
-          {/* <Col><Row style={styles.selectBtn} size={1}></Row></Col> */}
-        </Grid>
-        {/* <Text>@ game play page</Text> */}
-      </View>
+              <Row style={styles.selectBox} size={1}>
+                <TouchableOpacity style={styles.arrowBox} onPress={() => { removeArrow(1) }}>
+                  <Icon name={arrowBox[1]} size={40} color={arrowColor} /></TouchableOpacity>
+              </Row>
+              <Row style={styles.selectBtn} size={1}>
+                <TouchableOpacity style={styles.arrowBtn} onPress={() => { selectArrow("arrow-bottom-right-thick") }}>
+                  <Icon name="arrow-bottom-right-thick" size={40} color={arrowColor} />
+                </TouchableOpacity>
+              </Row>
+            </Col>
+            <Col>
+              <Row style={styles.selectBox} size={1}>
+                <TouchableOpacity style={styles.arrowBox} onPress={() => { removeArrow(2) }}>
+                  <Icon name={arrowBox[2]} size={40} color={arrowColor} /></TouchableOpacity>
+              </Row>
+              <Row style={styles.selectBtn} size={1}>
+                <TouchableOpacity style={styles.arrowBtn} onPress={() => { selectArrow("arrow-top-right-thick") }}>
+                  <Icon name="arrow-top-right-thick" size={40} color={arrowColor} />
+                </TouchableOpacity>
+              </Row>
+            </Col>
+            <Col>
+              <Row style={styles.selectBox} size={1}>
+                <TouchableOpacity style={styles.arrowBox} onPress={() => { removeArrow(3) }}>
+                  <Icon name={arrowBox[3]} size={40} color={arrowColor} /></TouchableOpacity>
+              </Row>
+              <Row style={styles.selectBtn} size={1}>
+                <TouchableOpacity style={styles.arrowBtn} onPress={() => { selectArrow("arrow-top-left-thick") }}>
+                  <Icon name="arrow-top-left-thick" size={40} color={arrowColor} />
+                </TouchableOpacity>
+              </Row>
+            </Col>
+            <Col>
+              <Row style={styles.selectBox} size={1}>
+                <TouchableOpacity style={styles.clearBtn} onPress={() => { setArrowBox([]) }}>
+                  <Text>CLEAR</Text>
+                </TouchableOpacity>
+              </Row>
+              <Row style={styles.selectBtn} size={1}>
+                <TouchableOpacity style={styles.goBtn} onPress={() => { moveCharacter() }}>
+                  <Text>GO</Text>
+                </TouchableOpacity>
+              </Row>
+            </Col>
+            {/* <Col><Row style={styles.selectBtn} size={1}></Row></Col> */}
+          </Grid>
+          {/* <Text>@ game play page</Text> */}
+        </View>
       </ImageBackground>
     </View>
-  
+
   );
 }
 const styles = StyleSheet.create({
   character: {
-    width: 50,
-    height: 50,
-    backgroundColor: "red",
+    width: 70,
+    height: 70,
     position: "absolute",
+    zIndex:999
   },
   container: {
     flex: 1,
